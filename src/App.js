@@ -1,16 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TeamCard from './TeamCard';
 import './App.css';
+
 
 
 function App() {
 const [results, setResults] = useState([])
 
-  fetch("https://randomuser.me/api/?results=10")
-  .then(response => response.json())
-  .then(data => {
-    setResults(data.results)
-  })
+  
+  useEffect(() =>{
+    fetch("https://randomuser.me/api/?results=5")
+    .then(response => response.json())
+    .then(data => {
+      setResults(data.results)
+    })
+  },[])
+  
 
   return (
    <div>
